@@ -1,0 +1,25 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+_public_hdrs = [
+    "include/boost/*.hpp",
+    "include/boost/variant/*.hpp",
+]
+
+cc_library(
+    name = "variant_internal",
+    hdrs = glob(["include/boost/**/*.hpp"], exclude = _public_hdrs),
+)
+
+cc_library(
+    name = "variant",
+    visibility = ["//visibility:public"],
+    includes = ["include"],
+    hdrs = glob(_public_hdrs),
+    deps = [
+        ":variant_internal",
+        "@boost//type_index",
+        "@boost//detail",
+        "@boost//move",
+        "@boost//integer",
+    ],
+)
