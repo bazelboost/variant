@@ -17,9 +17,9 @@ cc_library(
     hdrs = glob(_public_hdrs),
     deps = [
         ":variant_internal",
-        "@boost//type_index",
-        "@boost//detail",
-        "@boost//move",
-        "@boost//integer",
+        "@boost//libs/type_index",
+        "@boost//libs/detail",
+        "@boost//libs/move",
+        "@boost//libs/integer",
     ],
 )
